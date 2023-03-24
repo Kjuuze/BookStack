@@ -46,6 +46,16 @@ abstract class BookChild extends Entity
     }
 
     /**
+     * Get the entities that are globally searchable.
+     */
+    public function scopeGloballySearchable(Builder $query): Builder
+    {
+        return $query->whereHas('book', function (Builder $bookQuery) {
+            $bookQuery->where('global_search', true);
+        });
+    }
+
+    /**
      * Get the book this page sits in.
      */
     public function book(): BelongsTo

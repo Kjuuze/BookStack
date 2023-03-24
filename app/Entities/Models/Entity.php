@@ -73,6 +73,14 @@ abstract class Entity extends Model implements Sluggable, Favouritable, Viewable
     }
 
     /**
+     * Get the entities that are globally searchable.
+     */
+    public function scopeGloballySearchable(Builder $query): Builder
+    {
+        return $query;
+    }
+
+    /**
      * Query scope to get the last view from the current user.
      */
     public function scopeWithLastView(Builder $query)

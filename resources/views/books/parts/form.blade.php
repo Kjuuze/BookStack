@@ -35,6 +35,15 @@
     </div>
 </div>
 
+<div class="form-group">
+    @include('form.custom-checkbox', [
+        'name' => 'global_search',
+        'checked' => isset($book) ? $book->global_search : true,
+        'value' => '1',
+        'label' => trans('entities.books_global_search'),
+    ])
+</div>
+
 <div class="form-group text-right">
     <a href="{{ $returnLocation }}" class="button outline">{{ trans('common.cancel') }}</a>
     <button type="submit" class="button">{{ trans('entities.books_save') }}</button>

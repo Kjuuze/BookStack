@@ -163,6 +163,7 @@ return [
     'books_sort_move_after_chapter' => 'Move to After Chapter',
     'books_copy' => 'Copy Book',
     'books_copy_success' => 'Book successfully copied',
+    'books_global_search' => 'Integrate the book in the global search',
 
     // Chapters
     'chapter' => 'Chapter',

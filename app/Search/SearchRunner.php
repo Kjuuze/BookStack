@@ -73,7 +73,7 @@ class SearchRunner
             }
 
             $entityModelInstance = $this->entityProvider->get($entityType);
-            $searchQuery = $this->buildQuery($searchOpts, $entityModelInstance);
+            $searchQuery = $this->buildQuery($searchOpts, $entityModelInstance, ['globallySearchable']);
             $entityTotal = $searchQuery->count();
             $searchResults = $this->getPageOfDataFromQuery($searchQuery, $entityModelInstance, $page, $count);
 
@@ -157,9 +157,10 @@ class SearchRunner
     /**
      * Create a search query for an entity.
      */
-    protected function buildQuery(SearchOptions $searchOpts, Entity $entityModelInstance): EloquentBuilder
+    protected function buildQuery(SearchOptions $searchOpts, Entity $entityModelInstance, array $optionalScopes = []): EloquentBuilder
     {
-        $entityQuery = $entityModelInstance->newQuery()->scopes('visible');
+        $scopes = array_merge(['visible'], $optionalScopes);
+        $entityQuery = $entityModelInstance->newQuery()->scopes($scopes);
 
         if ($entityModelInstance instanceof Page) {
             $entityQuery->select(array_merge($entityModelInstance::$listAttributes, ['owned_by']));

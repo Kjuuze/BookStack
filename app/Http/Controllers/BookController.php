@@ -93,12 +93,7 @@ class BookController extends Controller
     public function store(Request $request, string $shelfSlug = null)
     {
         $this->checkPermission('book-create-all');
-        $validated = $this->validate($request, [
-            'name'        => ['required', 'string', 'max:255'],
-            'description' => ['string', 'max:1000'],
-            'image'       => array_merge(['nullable'], $this->getImageValidationRules()),
-            'tags'        => ['array'],
-        ]);
+        $validated = $this->validatedRequestData($request);
 
         $bookshelf = null;
         if ($shelfSlug !== null) {
@@ -166,12 +161,7 @@ class BookController extends Controller
         $book = $this->bookRepo->getBySlug($slug);
         $this->checkOwnablePermission('book-update', $book);
 
-        $validated = $this->validate($request, [
-            'name'        => ['required', 'string', 'max:255'],
-            'description' => ['string', 'max:1000'],
-            'image'       => array_merge(['nullable'], $this->getImageValidationRules()),
-            'tags'        => ['array'],
-        ]);
+        $validated = $this->validatedRequestData($request);
 
         if ($request->has('image_reset')) {
             $validated['image'] = null;
@@ -260,5 +250,25 @@ class BookController extends Controller
         $shelf = $transformer->transformBookToShelf($book);
 
         return redirect($shelf->getUrl());
+    }
+
+    /**
+     * Get validated request data
+     * 
+     * @param Request $request
+     * @return array
+     */
+    private function validatedRequestData(Request $request)
+    {
+        $validated = $this->validate($request, [
+            'name'        => ['required', 'string', 'max:255'],
+            'description' => ['string', 'max:1000'],
+            'image'       => array_merge(['nullable'], $this->getImageValidationRules()),
+            'tags'        => ['array'],
+        ]);
+
+        $validated['global_search'] = $request->input('global_search') ? true : false;
+
+        return $validated;
     }
 }
