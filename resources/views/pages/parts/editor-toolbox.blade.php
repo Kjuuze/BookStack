@@ -7,6 +7,7 @@
             <button type="button" refs="editor-toolbox@tab-button" data-tab="files" title="{{ trans('entities.attachments') }}">@icon('attach')</button>
         @endif
         <button type="button" refs="editor-toolbox@tab-button" data-tab="templates" title="{{ trans('entities.templates') }}">@icon('template')</button>
+        <button type="button" refs="editor-toolbox@tab-button" data-tab="promoted" title="{{ trans('common.news') }}">@icon('star')</button>
     </div>
 
     <div refs="editor-toolbox@tab-content" data-tab-content="tags" class="toolbox-tab-content">
@@ -25,6 +26,15 @@
 
         <div class="px-l">
             @include('pages.parts.template-manager', ['page' => $page, 'templates' => $templates])
+        </div>
+
+    </div>
+
+    <div refs="editor-toolbox@tab-content" data-tab-content="promoted" class="toolbox-tab-content">
+        <h4>{{ trans('common.news') }}</h4>
+
+        <div class="px-l">
+            @include('pages.parts.promoted', ['page' => $page])
         </div>
 
     </div>

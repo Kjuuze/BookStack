@@ -285,6 +285,7 @@ return [
     'pages_draft_discarded' => 'Draft discarded, The editor has been updated with the current page content',
     'pages_specific' => 'Specific Page',
     'pages_is_template' => 'Page Template',
+    'pages_promoted_help' => 'When should the page be release as news on home screen?',
 
     // Editor Sidebar
     'page_tags' => 'Page Tags',

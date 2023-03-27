@@ -285,6 +285,7 @@ return [
     'pages_draft_discarded' => 'Entwurf verworfen. Der aktuelle Seiteninhalt wurde geladen.',
     'pages_specific' => 'Spezifische Seite',
     'pages_is_template' => 'Seitenvorlage',
+    'pages_promoted_help' => 'Wann soll die Seite auf der Startseite als News publiziert werden?',
 
     // Editor Sidebar
     'page_tags' => 'Seiten-Schlagwörter',
