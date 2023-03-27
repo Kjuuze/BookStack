@@ -3,6 +3,7 @@
 namespace BookStack\Entities\Models;
 
 use BookStack\Auth\Permissions\PermissionApplicator;
+use BookStack\Casts\DateNullable;
 use BookStack\Entities\Tools\PageContent;
 use BookStack\Uploads\Attachment;
 use Illuminate\Database\Eloquent\Builder;
@@ -35,7 +36,7 @@ class Page extends BookChild
     public static $listAttributes = ['name', 'id', 'slug', 'book_id', 'chapter_id', 'draft', 'template', 'text', 'created_at', 'updated_at', 'priority'];
     public static $contentAttributes = ['name', 'id', 'slug', 'book_id', 'chapter_id', 'draft', 'template', 'html', 'text', 'created_at', 'updated_at', 'priority'];
 
-    protected $fillable = ['name', 'priority'];
+    protected $fillable = ['name', 'priority', 'promoted_at'];
 
     public $textField = 'text';
 
@@ -44,6 +45,7 @@ class Page extends BookChild
     protected $casts = [
         'draft'    => 'boolean',
         'template' => 'boolean',
+        'promoted_at' => DateNullable::class
     ];
 
     /**
