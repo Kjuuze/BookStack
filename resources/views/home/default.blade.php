@@ -17,6 +17,10 @@
         </div>
     </div>
 
+    <!-- // geogrid: add promoted page preview -->
+    @include('home.parts.promoted')
+    <!-- // /geogrid -->
+
     <div class="container" id="home-default">
         <div class="grid third gap-xxl no-row-gap" >
             <div>
@@ -69,6 +73,9 @@
             </div>
 
             <div>
+                <!-- // geogrid: recently promoted pages -->
+                @include('home.parts.recently-promoted')
+                <!-- // /geogrid -->
                 <div id="recent-activity">
                     <div class="card mb-xl">
                         <h3 class="card-title">{{ trans('entities.recent_activity') }}</h3>

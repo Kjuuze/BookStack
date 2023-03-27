@@ -79,6 +79,7 @@ return [
     'status_inactive' => 'Inactive',
     'never' => 'Never',
     'none' => 'None',
+    'news' => 'News',
 
     // Header
     'homepage' => 'Homepage',
